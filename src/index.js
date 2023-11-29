@@ -10,6 +10,7 @@ const port = process.env.PORT
 const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASS
 
+//Rota Publica
 app.get('/', (req, res) =>{
   res.status(200).send({msg:"Bem-vindo a minha API!"})
 })

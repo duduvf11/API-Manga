@@ -8,7 +8,7 @@ const MangaSchema = new mongoose.Schema({
   
     chapters: Number,
     
-    mangaType: {
+    author: {
       type: String,
       default: 'Manga'
     }, 
