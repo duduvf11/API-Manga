@@ -14,7 +14,7 @@ router.get("/find", async (req, res) => {
   })
 
 //Rota Privada
-router.get('/:id', async (req, res) => {
+router.get('/:id', checkToken, async (req, res) => {
   
         const id = req.params.id;
         
@@ -24,9 +24,29 @@ router.get('/:id', async (req, res) => {
         // checar se o usuário existe
         const user = await users.findById(id, '-password');
 
-        res.status(200).json ({user})
+        res.status(200).json({user})
 
-});
+})
+
+function checkToken( req, res, next) {
+
+    const authHeader = req.headers['authorization']
+    const token = authHeader?.split(" ")[1]
+
+    if(!token){
+        return res.status(401).json({msg: "Acesso Negado!"})
+    }
+
+    try {
+        const secret = process.env.SECRET
+
+        jwt.verify(token, secret)
+        
+        next()
+    } catch (error) {
+        res.status(400).json({msg: "Token Invalido!"})
+    }
+}
 
 router.post('/auth/register', async (req, res) => {
 
