@@ -48,6 +48,37 @@ function checkToken( req, res, next) {
     }
 }
 
+async function isAdmin(req, res, next) {
+    const id = req.params.id
+    console.log(id)
+         
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ msg: 'ID de usuário inválido' });
+    }
+    
+    const user = await users.findById(id, '-password');
+    console.log(user.admin)
+    if(user.admin == false){
+        return res.status(200).json({msg: 'Acesso negado. Você não é administrador'})
+    } else {
+        next()
+    }
+
+}
+    
+ router.get('/admin/:id', checkToken, isAdmin, async (req, res) => {
+        
+    const id = req.params.id;
+        
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ msg: 'ID de usuário inválido' });
+    }
+
+    const user = await users.findById(id, '-password');
+    res.status(200).json({user})
+
+  });
+
 router.post('/auth/register', async (req, res) => {
 
     const {name, email, password, confirmpassword} = req.body
@@ -120,7 +151,7 @@ router.post('/auth/login', async (req, res) =>{
         
         const secret = process.env.SECRET
         const token = jwt.sign({
-            id: user._id
+            id: user._id,
             },
             secret,
         )
