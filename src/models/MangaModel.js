@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const MangaSchema = new mongoose.Schema({
-    name: {
+    title: {
       type: String,
       required: [true, 'O campo nome é obrigatorio']
     } ,
