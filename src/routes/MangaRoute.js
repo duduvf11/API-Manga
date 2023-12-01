@@ -15,23 +15,31 @@ router.delete("/:id", async(req, res) => {
 })
 
 router.put("/:id", async (req, res) => {
+   
+    const {title, volume, author, genre, type} = req.body
+
     const manga = await Manga.findByIdAndUpdate(req.params.id, {
-        titulo: req.body.titulo,
-        autor: req.body.autor,
-        genero: req.body.genero,
-        volumes: req.body.volumes,
+        title,
+        volume,
+        author,
+        genre,
+        type
     }, {
         new: true
     })
     return res.send(manga)
 })
 
-router.post("/", async (req, res) => {
+router.post("/create", async (req, res) => {
+
+    const {title, volume, author, genre, type} = req.body
+
     const manga = new Manga({
-        titulo: req.body.titulo,
-        autor: req.body.autor,
-        genero: req.body.genero,
-        volumes: req.body.volumes,
+        title,
+        volume,
+        author,
+        genre,
+        type
     })
     await manga.save()
     return res.send(manga)
