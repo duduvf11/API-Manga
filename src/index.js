@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/UserRoute')
+const mangaRoute = require('./routes/MangaRoute')
 require('dotenv').config()
 
 const app = express()
@@ -16,6 +17,7 @@ app.get('/', (req, res) =>{
 })
 
 app.use("/usuario", userRoute);
+app.use("/manga", mangaRoute)
 
 mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@api-manga.l2yy3cg.mongodb.net/`)
 .then(() => {
