@@ -12,7 +12,6 @@ Foi usado durante o desenvolvimento do trabalho:
 - [x] ROTA PARA CADASTRO DE USUÁRIO - OK
 - [ ] USUÁRIOS ADMIN ---- PENDENTE
 - [ ] ROTA ADMIN ---- PENDENTE
-- [ ] ROTA ADMIN ---- PENDENTE
 - [x] ALTERAÇÃO DE DADOS USUÁRIO --- OK
 
 ### SISTEMA CRUD 
