@@ -5,7 +5,10 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 require('dotenv').config()
 
-router.get("/find", async (req, res) => {
+//Rota Admin
+
+//get users
+router.get("/admin/:id", checkToken, isAdmin, async (req, res) => {
     await users.find({}).then(function(allUsers) {
       res.json(allUsers)
     }).catch(function(err) {
@@ -13,19 +16,28 @@ router.get("/find", async (req, res) => {
     })
   })
 
-//Rota Privada
-router.get('/:id', checkToken, async (req, res) => {
-  
-        const id = req.params.id;
-        
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({ msg: 'ID de usuário inválido' });
-        }
-        // checar se o usuário existe
-        const user = await users.findById(id, '-password');
+//delete user
+router.delete("/admin/delete/:id", checkToken, isAdmin, async(req, res) => {
+    const id = req.body._id
+    const user = await users.findByIdAndDelete(id)
+    return res.send(user)
+})
 
-        res.status(200).json({user})
+//uptade users - create other admin
+router.put("/admin/update/:id", checkToken, isAdmin, async (req, res) => {
+   
+    const {_id, name, email, password, admin} = req.body
 
+    const user = await users.findByIdAndUpdate(req.body._id, {
+        _id,
+        name,
+        email,
+        password,
+        admin,
+    }, {
+        new: true
+    })
+    return res.send(user)
 })
 
 function checkToken( req, res, next) {
@@ -48,6 +60,41 @@ function checkToken( req, res, next) {
     }
 }
 
+<<<<<<< Updated upstream
+=======
+async function isAdmin(req, res, next) {
+    const id = req.params.id
+         
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ msg: 'ID de usuário inválido' });
+    }
+    
+    const user = await users.findById(id, '-password');
+    if(user.admin == false){
+        return res.status(200).json({msg: 'Acesso negado. Você não é administrador'})
+    } else {
+        next()
+    }
+
+}
+
+router.put("/update/:id", checkToken, async (req, res) => {
+   
+    const {name, email, password, confirmpassword} = req.body
+
+    const user = await users.findByIdAndUpdate(req.params.id, {
+        name,
+        email,
+        password,
+        confirmpassword,
+    }, {
+        new: true
+    })
+    return res.send(user)
+})
+
+
+>>>>>>> Stashed changes
 router.post('/auth/register', async (req, res) => {
 
     const {name, email, password, confirmpassword} = req.body
@@ -123,6 +170,7 @@ router.post('/auth/login', async (req, res) =>{
             id: user._id
             },
             secret,
+            { expiresIn: '10m'},
         )
 
         res.status(200).json({msg: "Autenticação realizada com sucesso!", token})
