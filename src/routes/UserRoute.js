@@ -91,7 +91,6 @@ router.put("/update/:id", checkToken, async (req, res) => {
     return res.send(user)
 })
 
-
 router.post('/auth/register', async (req, res) => {
 
     const {name, email, password, confirmpassword} = req.body
@@ -164,7 +163,7 @@ router.post('/auth/login', async (req, res) =>{
         
         const secret = process.env.SECRET
         const token = jwt.sign({
-            id: user._id
+            id: user._id,
             },
             secret,
             { expiresIn: '10m'},
