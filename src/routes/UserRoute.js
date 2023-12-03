@@ -65,19 +65,6 @@ async function isAdmin(req, res, next) {
     }
 
 }
-    
- router.get('/admin/:id', checkToken, isAdmin, async (req, res) => {
-        
-    const id = req.params.id;
-        
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({ msg: 'ID de usuário inválido' });
-    }
-
-    const user = await users.findById(id, '-password');
-    res.status(200).json({user})
-
-  });
 
 router.post('/auth/register', async (req, res) => {
 
