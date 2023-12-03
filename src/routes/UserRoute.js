@@ -60,8 +60,6 @@ function checkToken( req, res, next) {
     }
 }
 
-<<<<<<< Updated upstream
-=======
 async function isAdmin(req, res, next) {
     const id = req.params.id
          
@@ -94,7 +92,6 @@ router.put("/update/:id", checkToken, async (req, res) => {
 })
 
 
->>>>>>> Stashed changes
 router.post('/auth/register', async (req, res) => {
 
     const {name, email, password, confirmpassword} = req.body
