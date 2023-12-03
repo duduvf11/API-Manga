@@ -9,10 +9,10 @@ Foi usado durante o desenvolvimento do trabalho:
 - Frameworks: Express, Mongoose, Json web token
 
 ### USUÁRIO
-- [x] ROTA PARA CADASTRO DE USUÁRIO - OK
-- [ ] USUÁRIOS ADMIN ---- PENDENTE
-- [ ] ROTA ADMIN ---- PENDENTE
-- [x] ALTERAÇÃO DE DADOS USUÁRIO --- OK
+- [x] ROTA PARA CADASTRO DE USUÁRIO
+- [x] USUÁRIOS ADMIN 
+- [x] ROTA ADMIN
+- [x] ALTERAÇÃO DE DADOS USUÁRIO 
 
 ### SISTEMA CRUD 
 - [x] Manga - OK
