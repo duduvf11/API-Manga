@@ -9,18 +9,21 @@ const MangaSchema = new mongoose.Schema({
     volume: Number,
     
     author: {
-      type: String,
-      required:[true, 'O campo autor é obrigatorio']
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'autors',
+      required: [true, 'O campo autor é obrigatório']
     },
 
     type: {
-      type: String,
-      required:[true, 'O campo tipo é obrigatorio']
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "tipos",
+      required:[true, 'O manga precisa ter no minimo 1 tipo']
     },
     
     genre: {
-      type: String,
-      required:[true, 'O manga precisa requer no minimo 1 gênero']
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "generos",
+      required:[true, 'O manga precisa ter no minimo 1 genêro']
     }
 
   })

@@ -1,15 +1,16 @@
 const mongoose = require('mongoose')
 
 const GeneroSchema = new mongoose.Schema({
-    nome: {
+    genre: {
       type: String,
-      required: [true, 'O campo nome é obrigatório']
+      required: [true, 'É obrigátorio ter pelos menos um gênero']
     },
-  
-    descricao: {
-      type: String,
-      required: [true, 'O campo descrição é obrigatório']
-    }
+
+    mangas: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'mangas', // Referência à coleção Manga
+      required: [true, 'O gênero precisa ter no mínimo 1 manga']
+    }]
 })
 
 module.exports = mongoose.model('generos', GeneroSchema)

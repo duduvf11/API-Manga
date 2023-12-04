@@ -78,11 +78,10 @@ async function isAdmin(req, res, next) {
 
 router.put("/update/:id", checkToken, async (req, res) => {
    
-    const {name, email, password, confirmpassword} = req.body
+    const {name, password, confirmpassword} = req.body
 
     const user = await users.findByIdAndUpdate(req.params.id, {
         name,
-        email,
         password,
         confirmpassword,
     }, {
