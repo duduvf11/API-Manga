@@ -2,6 +2,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/UserRoute')
 const mangaRoute = require('./routes/MangaRoute')
+const authorRoute = require('./routes/AuthorRoute')
+const typeRoute = require('./routes/TypeRoute')
+const genreRoute = require('./routes/GenreRoute')
 
 const mangas = require("./models/MangaModel")
 const authors = require("./models/AuthorModel")
@@ -23,7 +26,10 @@ app.get('/', (req, res) =>{
 })
 
 app.use("/usuario", userRoute);
-app.use("/manga", mangaRoute)
+app.use("/manga", mangaRoute);
+app.use("/autor", authorRoute);
+app.use("/tipo", typeRoute);
+app.use("/genero", genreRoute);
 
 app.get('/install', async (req, res) => {
     try {

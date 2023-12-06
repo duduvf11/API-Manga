@@ -1,11 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Manga = require('../models/MangaModel')
-const checkAuth = require('../routes/UserRoute')
 const router = express.Router()
 
 
-router.get('/find', checkAuth, async (req, res) => {
+router.get('/find', async (req, res) => {
     const manga = await Manga.find()
     return res.send(manga)
 })
