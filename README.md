@@ -18,11 +18,11 @@ Foi usado durante o desenvolvimento do trabalho:
 - [x] Manga - OK
 - [x] Autor - PENDENTE
 - [x] Genero - PENDENTE
-- [x] Tipo { MANGA, MANHWA } - PENDENTE
-- [x] AUTENTICAÇÃO NO SISTEMA - PENDENTE
-- [x] GERAR MENSAGENS DE AUTENTICAÇÃO - PENDENTE 
+- [x] Tipo { MANGA, MANHWA }
+- [x] AUTENTICAÇÃO NO SISTEMA
+- [x] GERAR MENSAGENS DE AUTENTICAÇÃO
 - [ ] PAGINAÇÃO - PENDENTE 
 - [ ] OPERAÇÃO ESPECIAL - PENDENTE { RECOMENDAÇÃO }
-- [x] ROTA GET/INSTALL - PENDENTE
+- [x] ROTA GET/INSTALL
 - [ ] SWAGGER GET/DOCS - PENDENTE
 
