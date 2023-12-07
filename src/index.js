@@ -13,6 +13,9 @@ const tipos = require("./models/TypeModel")
 
 require('dotenv').config()
 
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
+
 const app = express()
 app.use(express.json())
 
@@ -30,6 +33,8 @@ app.use("/manga", mangaRoute);
 app.use("/autor", authorRoute);
 app.use("/tipo", typeRoute);
 app.use("/genero", genreRoute);
+
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 app.get('/install', async (req, res) => {
     try {

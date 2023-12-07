@@ -105,4 +105,31 @@ router.post("/create", async (req, res) => {
     }
 })
 
+router.patch('/update/volumes/:id', async (req, res)=>{
+
+    const { volume } = req.body;
+
+    if (!volume) {
+        return res.status(422).json({ msg: 'O campo volume é obrigatório para a atualização!' });
+    }
+
+    try {
+
+        const manga = await Manga.findById(req.params.id);
+
+        if (!manga) {
+            return res.status(404).json({ msg: 'Manga não encontrado!' });
+        }
+
+        manga.volume = volume;
+
+        const updatedManga = await manga.save();
+
+        return res.json(updatedManga);
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send('Erro no servidor');
+    }
+})
+
 module.exports = router
