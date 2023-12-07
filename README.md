@@ -21,8 +21,6 @@ Foi usado durante o desenvolvimento do trabalho:
 - [x] Tipo { MANGA, MANHWA }
 - [x] AUTENTICAÇÃO NO SISTEMA
 - [x] GERAR MENSAGENS DE AUTENTICAÇÃO
-- [ ] PAGINAÇÃO - PENDENTE 
-- [ ] OPERAÇÃO ESPECIAL - PENDENTE { RECOMENDAÇÃO }
 - [x] ROTA GET/INSTALL
-- [ ] SWAGGER GET/DOCS - PENDENTE
+- [x] SWAGGER GET/DOCS
 
